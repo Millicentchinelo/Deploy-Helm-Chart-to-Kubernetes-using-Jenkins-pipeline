@@ -1,0 +1,16 @@
+
+
+appName: app
+
+port: 80
+
+namespace: default
+
+configmap:
+  name: myhelmapp-configmap-v1
+  data:
+    CUSTOM_HEADER: 'This app was deployed with helm!'
+
+image:
+  name: millicent25/app	
+  tag: latest
