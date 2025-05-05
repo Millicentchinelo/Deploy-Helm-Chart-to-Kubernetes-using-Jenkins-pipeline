@@ -2,7 +2,7 @@
 
 appName: app
 
-port: 80
+port: 86
 
 namespace: default
 
@@ -12,5 +12,5 @@ configmap:
     CUSTOM_HEADER: 'This app was deployed with helm!'
 
 image:
-  name: millicent25/app	
+  name: millicent25/nginxweb-app	
   tag: latest
