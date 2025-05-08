@@ -13,4 +13,4 @@ spec:
   selector:
     app: mywebapp
     tier: frontend
-  type: NodePort
+  type: LoadBalancer
