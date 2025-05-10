@@ -4,7 +4,7 @@ appName: app
 
 port: 80
 
-namespace: default
+namespace: helm-deployment
 
 configmap:
   name: myhelmapp-configmap-v1
