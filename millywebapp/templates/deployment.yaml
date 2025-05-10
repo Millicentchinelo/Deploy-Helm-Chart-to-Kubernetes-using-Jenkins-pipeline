@@ -4,17 +4,17 @@ metadata:
   name: helmdeployment
   namespace: default
   labels:
-    app: app
+    app: mywebapp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: app
+      app: mywebapp
       tier: frontend
   template:
     metadata:
       labels:
-        app: app
+        app: mywebapp
         tier: frontend
     spec: # Pod spec
       containers:
