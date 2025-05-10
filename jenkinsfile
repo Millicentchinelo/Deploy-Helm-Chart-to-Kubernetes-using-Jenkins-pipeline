@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Get Source Code from Git') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Millicentchinelo/Deploy-Helm-Chart-to-Kubernetes-using-Jenkins-pipeline.git']])
+            }
+        }
+        stage('Pull image from Docker Repository') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'dockerps', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        sh('docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}')
+                        sh('docker pull millicent25/nginxweb-app:latest')
+                    }
+                }
+            }
+        }
+        stage('Helm install') {
+            steps {
+                script {
+                    sh 'helm upgrade myfirstrelease millywebapp/ --values millywebapp/values.yaml --namespace helm-deployment'
+                }
+            }
+        }
+    }
+}
