@@ -19,9 +19,9 @@ spec:
     spec: # Pod spec
       containers:
       - name: mycontainer
-        image: millicent25/my-app-port86:latest
+        image: millicent25/nginxweb-app:latest
         ports:
-        - containerPort: 86
+        - containerPort: 80
         envFrom:
         - configMapRef:
             name: myconfigmapv1.0
